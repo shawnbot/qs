@@ -1,0 +1,23 @@
+{
+  "name": "qs",
+  "version": "0.1.0",
+  "description": "a tiny little query string parsing and formatting library",
+  "main": "qs.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shawnbot/qs.git"
+  },
+  "keywords": [
+    "query",
+    "string",
+    "parse",
+    "format"
+  ],
+  "author": "Shawn Allen <shawn@stamen.com>",
+  "license": "BSD",
+  "gitHead": "a87eb302d24eee056cff6e8f183bbfb1ca7507c6",
+  "readmeFilename": "README.md"
+}
