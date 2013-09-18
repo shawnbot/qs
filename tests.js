@@ -1,4 +1,4 @@
-var qs = require("./qs").qs,
+var qs = require("./qs"),
     assert = require("assert");
 
 describe("qs", function() {
@@ -31,6 +31,17 @@ describe("qs", function() {
       );
     });
 
+    it("should parse + as space", function() {
+      assert.deepEqual(
+        qs.parse("foo=bar+baz"),
+        {foo: "bar baz"}
+      );
+      assert.deepEqual(
+        qs.parse("foo+bar=baz"),
+        {"foo bar": "baz"}
+      );
+    });
+
   });
 
   describe("format()", function() {
@@ -46,6 +57,28 @@ describe("qs", function() {
       assert.equal(
         qs.format({foo: "a", bar: "b"}),
         "foo=a&bar=b"
+      );
+    });
+
+    it("should encode spaces as +", function() {
+      assert.equal(
+        qs.format({foo: "bar baz"}),
+        "foo=bar+baz"
+      );
+      assert.equal(
+        qs.format({"foo bar": "baz"}),
+        "foo+bar=baz"
+      );
+    });
+
+    it("shouldn't touch commas", function() {
+      assert.equal(
+        qs.format({foo: "bar, baz"}),
+        "foo=bar,+baz"
+      );
+      assert.equal(
+        qs.format({foo: [1, 2, 3]}),
+        "foo=1,2,3"
       );
     });
 
